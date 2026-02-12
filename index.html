@@ -36,7 +36,7 @@
             background-color: #fff;
             width: 100%;
             max-width: 650px;
-            /* 將 padding 歸零，讓圖片可以滿版貼齊邊緣 */
+            /* 讓圖片可以滿版貼齊邊緣 */
             padding: 0; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
             border-radius: 8px;
@@ -53,21 +53,18 @@
             width: 100%;
             height: 4px;
             background-color: var(--accent-color);
-            z-index: 10; /* 確保紅線在圖片之上 */
+            z-index: 10;
         }
 
-        /* 橫幅圖片樣式 */
+        /* 修改處：移除原本的背景色與高度設定 
+           現在只保留寬度 100%，最單純的圖片顯示方式
+        */
         .banner-image {
             width: 100%;
-            height: auto;
             display: block;
-            /* 加一點底部的陰影，讓圖片與下方白色背景有層次感 */
-            border-bottom: 1px solid #eee; 
-            background-color: #000; /* 圖片尚未載入時的底色 */
-            min-height: 120px; /* 避免圖片載入前版面跳動 */
+            height: auto;
         }
 
-        /* 將原本的 padding 移到內層的 body 區塊 */
         .container-body {
             padding: 40px 50px 50px;
         }
@@ -157,7 +154,6 @@
             margin: 40px 0;
         }
 
-        /* Checkbox 防奧客區塊設計 */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
@@ -225,7 +221,12 @@
 <body>
 
 <div class="container">
-    <img src="行行封面(20).jpg" alt="頻道封面：自媒體+投資x時間=財富自由" class="banner-image">
+    <!-- 
+      這邊就是單純的圖片標籤 
+      請務必確認你的圖片檔名為 banner.jpg (全小寫) 
+      並且已經上傳到 GitHub 
+    -->
+    <img src="行行封面(20).jpg" alt="頻道封面" class="banner-image">
 
     <div class="container-body">
         <div class="header">
@@ -235,11 +236,6 @@
             <p style="margin-top: 8px; font-size: 0.85rem; color: var(--accent-color); font-weight: 600;">⚠️ 目前僅開放每月 3 個名額 ⚠️</p>
         </div>
 
-        <!-- 
-           ⚠️ Debug 模式開啟：
-           我先把 target="hidden_iframe" 拿掉了。
-           這樣送出後會直接跳轉到 Google 表單畫面，你可以看到是否有錯誤訊息。
-        -->
         <form id="consultForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg/formResponse" method="POST">
             
             <div class="form-group">
@@ -262,11 +258,6 @@
                 <span class="description">這是一項高強度的真人顧問服務，請確認您的投資意願。</span>
                 <select name="entry.1065046570" required>
                     <option value="" disabled selected>請選擇您的預算...</option>
-                    <!-- 
-                       ⚠️ 修正重點：
-                       原本是 "...預算 (建議..." (有空格)
-                       改為   "...預算(建議..." (無空格，對齊你的 Google 設定)
-                    -->
                     <option value="我只有幾千塊預算(建議您觀看我的免費影片)">我只有幾千塊預算 (建議先看我免費影片)</option>
                     <option value="1萬 - 3萬 (單次戰略諮詢)">1萬 - 3萬 (單次戰略諮詢)</option>
                     <option value="3萬 - 6萬 (適合 90 天陪跑計畫)">3萬 - 6萬 (適合 90 天陪跑計畫)</option>
