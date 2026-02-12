@@ -1,1 +1,402 @@
 
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 營利戰略諮詢 | 1對1 陪跑計畫申請</title>
+    <style>
+        :root {
+            --primary-color: #111111;
+            --accent-color: #cc0000;
+            --bg-color: #f7f7f8;
+            --input-bg: #ffffff;
+            --border-color: #e1e1e1;
+            --text-color: #333333;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 650px;
+            /* 將 padding 歸零，讓圖片可以滿版貼齊邊緣 */
+            padding: 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 頂部紅線裝飾 */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent-color);
+            z-index: 10; /* 確保紅線在圖片之上 */
+        }
+
+        /* 橫幅圖片樣式 */
+        .banner-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 加一點底部的陰影，讓圖片與下方白色背景有層次感 */
+            border-bottom: 1px solid #eee; 
+            background-color: #000; /* 圖片尚未載入時的底色 */
+            min-height: 120px; /* 避免圖片載入前版面跳動 */
+        }
+
+        /* 將原本的 padding 移到內層的 body 區塊 */
+        .container-body {
+            padding: 40px 50px 50px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: rgba(204, 0, 0, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+        }
+
+        .description {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: -4px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            transition: all 0.2s ease;
+            color: var(--primary-color);
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eaeaea;
+            margin: 40px 0;
+        }
+
+        /* Checkbox 防奧客區塊設計 */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 30px;
+            padding: 24px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+            color: #444;
+            cursor: pointer;
+        }
+
+        .checkbox-group strong {
+            color: var(--accent-color);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 35px;
+        }
+
+        .btn-submit:hover {
+            background-color: #333;
+        }
+        
+        .btn-submit:active {
+            transform: translateY(2px);
+        }
+
+        /* 成功提示彈窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .modal-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 15px; }
+            .container-body { padding: 30px 20px; }
+            .header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 這邊是插入圖片的地方，請確保你的圖片檔名叫做 banner.jpg 並放在同一個資料夾 -->
+    <img src="banner.jpg" alt="頻道封面：自媒體+投資x時間=財富自由" class="banner-image">
+
+    <div class="container-body">
+        <div class="header">
+            <span class="tagline">Real Human Strategy // No AI BS</span>
+            <h1>YouTube 營利戰略諮詢</h1>
+            <p>這不是售賣焦慮的線上課程，而是基於我 100 萬流量變現經驗的 1 對 1 實戰陪跑。</p>
+            <p style="margin-top: 8px; font-size: 0.85rem; color: var(--accent-color); font-weight: 600;">⚠️ 目前僅開放每月 3 個名額 ⚠️</p>
+        </div>
+
+        <!-- 
+           ✅ 所有 ID 都已對接完成！
+           Form ID: 1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg
+        -->
+        <form id="consultForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg/formResponse" method="POST" target="hidden_iframe">
+            
+            <div class="form-group">
+                <label>您目前的頻道狀態</label>
+                <!-- ✅ 已確認: entry.2005620554 -->
+                <select name="entry.2005620554" required>
+                    <option value="" disabled selected>請選擇...</option>
+                    <option value="完全從零開始">完全從零開始</option>
+                    <option value="已開始上傳但流量低迷">已開始上傳但流量低迷</option>
+                    <option value="已開啟營利，想擴大收入">已開啟營利，想擴大收入</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>您計畫做的頻道類型 (Niche)</label>
+                <!-- ✅ 已確認: entry.1045781291 -->
+                <input type="text" name="entry.1045781291" placeholder="例如：美股投資、寵物生活、個人Vlog..." required>
+            </div>
+
+            <div class="form-group">
+                <label>投入預算範圍 (新台幣/月)</label>
+                <span class="description">這是一項高強度的真人顧問服務，請確認您的投資意願。</span>
+                <!-- ✅ 已確認: entry.1065046570 -->
+                <select name="entry.1065046570" required>
+                    <option value="" disabled selected>請選擇您的預算...</option>
+                    <option value="我只有幾千塊預算 (建議您觀看我的免費影片)">我只有幾千塊預算 (建議先看我免費影片)</option>
+                    <option value="1萬 - 3萬 (單次戰略諮詢)">1萬 - 3萬 (單次戰略諮詢)</option>
+                    <option value="3萬 - 6萬 (適合 90 天陪跑計畫)">3萬 - 6萬 (適合 90 天陪跑計畫)</option>
+                    <option value="6萬以上 (全案規劃)">6萬以上 (全案深度規劃)</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label>怎麼稱呼</label>
+                <!-- ✅ 已確認: entry.1166974658 -->
+                <input type="text" name="entry.1166974658" placeholder="例如：小明 / Alex" required>
+            </div>
+
+            <div class="form-group">
+                <label>常用 Email</label>
+                <!-- ✅ 已確認: entry.839337160 -->
+                <input type="email" name="entry.839337160" placeholder="example@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>您目前經營自媒體遇到最大的卡點是什麼？</label>
+                <!-- 
+                   ✅ 更新完成: entry.698860398 
+                -->
+                <textarea name="entry.698860398" placeholder="請盡量詳細描述。例如：不知道怎麼下標題、剪輯太花時間、不知道怎麼將流量變現..." required></textarea>
+            </div>
+
+            <!-- 防奧客/權責聲明 -->
+            <div class="checkbox-group">
+                <!-- 
+                   ✅ 更新完成: entry.872093795 
+                   value="我同意" 也已確認正確
+                -->
+                <input type="checkbox" id="agreement" name="entry.872093795" value="我同意" required>
+                <label for="agreement">
+                    我理解此服務為<strong>「戰略顧問」</strong>而非「代營運」。成效取決於我的執行力，顧問將提供經驗路徑與針對性覆盤，但<strong>不會代替我剪輯影片或經營頻道</strong>。我也理解這需要預約排程，非隨傳隨到。
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">送出申請資料</button>
+        </form>
+    </div>
+</div>
+
+<!-- 隱藏的 iframe 用於無縫接收 Google Form 回應 -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<!-- 成功送出後的彈窗提示 -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+        <h2>🎉 申請已送出！</h2>
+        <p>我已經收到您的表單。我會進行初步評估，若符合資格，將在 24 小時內透過 Email 與您聯繫。</p>
+        <button class="modal-btn" onclick="closeModal()">了解，返回首頁</button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('consultForm');
+    const iframe = document.getElementById('hidden_iframe');
+    const modal = document.getElementById('successModal');
+    let isSubmitted = false;
+
+    form.addEventListener('submit', function() {
+        isSubmitted = true;
+        const btn = form.querySelector('.btn-submit');
+        btn.textContent = '送出中...';
+        btn.disabled = true;
+        btn.style.backgroundColor = '#666';
+    });
+
+    iframe.addEventListener('load', function() {
+        if (isSubmitted) {
+            modal.style.display = 'flex';
+            const btn = form.querySelector('.btn-submit');
+            btn.textContent = '送出申請資料';
+            btn.disabled = false;
+            btn.style.backgroundColor = '';
+            form.reset(); 
+            isSubmitted = false;
+        }
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
