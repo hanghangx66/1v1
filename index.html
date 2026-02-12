@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -216,49 +215,6 @@
             transform: translateY(2px);
         }
 
-        /* 成功提示彈窗 */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(3px);
-        }
-
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .modal-content h2 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .modal-content p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .modal-btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
         @media (max-width: 480px) {
             body { padding: 15px; }
             .container-body { padding: 30px 20px; }
@@ -269,7 +225,6 @@
 <body>
 
 <div class="container">
-    <!-- 這邊是插入圖片的地方，請確保你的圖片檔名叫做 banner.jpg 並放在同一個資料夾 -->
     <img src="行行封面(20).jpg" alt="頻道封面：自媒體+投資x時間=財富自由" class="banner-image">
 
     <div class="container-body">
@@ -281,14 +236,14 @@
         </div>
 
         <!-- 
-           ✅ 所有 ID 都已對接完成！
-           Form ID: 1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg
+           ⚠️ Debug 模式開啟：
+           我先把 target="hidden_iframe" 拿掉了。
+           這樣送出後會直接跳轉到 Google 表單畫面，你可以看到是否有錯誤訊息。
         -->
-        <form id="consultForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg/formResponse" method="POST" target="hidden_iframe">
+        <form id="consultForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfs3qGwOV-6tmWL0WSC9ZL_F-MVeEYf9rVF_M0vpjnu68mVlg/formResponse" method="POST">
             
             <div class="form-group">
                 <label>您目前的頻道狀態</label>
-                <!-- ✅ 已確認: entry.2005620554 -->
                 <select name="entry.2005620554" required>
                     <option value="" disabled selected>請選擇...</option>
                     <option value="完全從零開始">完全從零開始</option>
@@ -299,17 +254,20 @@
 
             <div class="form-group">
                 <label>您計畫做的頻道類型 (Niche)</label>
-                <!-- ✅ 已確認: entry.1045781291 -->
                 <input type="text" name="entry.1045781291" placeholder="例如：美股投資、寵物生活、個人Vlog..." required>
             </div>
 
             <div class="form-group">
                 <label>投入預算範圍 (新台幣/月)</label>
                 <span class="description">這是一項高強度的真人顧問服務，請確認您的投資意願。</span>
-                <!-- ✅ 已確認: entry.1065046570 -->
                 <select name="entry.1065046570" required>
                     <option value="" disabled selected>請選擇您的預算...</option>
-                    <option value="我只有幾千塊預算 (建議您觀看我的免費影片)">我只有幾千塊預算 (建議先看我免費影片)</option>
+                    <!-- 
+                       ⚠️ 修正重點：
+                       原本是 "...預算 (建議..." (有空格)
+                       改為   "...預算(建議..." (無空格，對齊你的 Google 設定)
+                    -->
+                    <option value="我只有幾千塊預算(建議您觀看我的免費影片)">我只有幾千塊預算 (建議先看我免費影片)</option>
                     <option value="1萬 - 3萬 (單次戰略諮詢)">1萬 - 3萬 (單次戰略諮詢)</option>
                     <option value="3萬 - 6萬 (適合 90 天陪跑計畫)">3萬 - 6萬 (適合 90 天陪跑計畫)</option>
                     <option value="6萬以上 (全案規劃)">6萬以上 (全案深度規劃)</option>
@@ -320,83 +278,30 @@
 
             <div class="form-group">
                 <label>怎麼稱呼</label>
-                <!-- ✅ 已確認: entry.1166974658 -->
                 <input type="text" name="entry.1166974658" placeholder="例如：小明 / Alex" required>
             </div>
 
             <div class="form-group">
                 <label>常用 Email</label>
-                <!-- ✅ 已確認: entry.839337160 -->
                 <input type="email" name="entry.839337160" placeholder="example@gmail.com" required>
             </div>
 
             <div class="form-group">
                 <label>您目前經營自媒體遇到最大的卡點是什麼？</label>
-                <!-- 
-                   ✅ 更新完成: entry.698860398 
-                -->
                 <textarea name="entry.698860398" placeholder="請盡量詳細描述。例如：不知道怎麼下標題、剪輯太花時間、不知道怎麼將流量變現..." required></textarea>
             </div>
 
-            <!-- 防奧客/權責聲明 -->
             <div class="checkbox-group">
-                <!-- 
-                   ✅ 更新完成: entry.872093795 
-                   value="我同意" 也已確認正確
-                -->
                 <input type="checkbox" id="agreement" name="entry.872093795" value="我同意" required>
                 <label for="agreement">
                     我理解此服務為<strong>「戰略顧問」</strong>而非「代營運」。成效取決於我的執行力，顧問將提供經驗路徑與針對性覆盤，但<strong>不會代替我剪輯影片或經營頻道</strong>。我也理解這需要預約排程，非隨傳隨到。
                 </label>
             </div>
 
-            <button type="submit" class="btn-submit">送出申請資料</button>
+            <button type="submit" class="btn-submit">送出申請資料 (Debug Mode)</button>
         </form>
     </div>
 </div>
-
-<!-- 隱藏的 iframe 用於無縫接收 Google Form 回應 -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-<!-- 成功送出後的彈窗提示 -->
-<div class="modal-overlay" id="successModal">
-    <div class="modal-content">
-        <h2>🎉 申請已送出！</h2>
-        <p>我已經收到您的表單。我會進行初步評估，若符合資格，將在 24 小時內透過 Email 與您聯繫。</p>
-        <button class="modal-btn" onclick="closeModal()">了解，返回首頁</button>
-    </div>
-</div>
-
-<script>
-    const form = document.getElementById('consultForm');
-    const iframe = document.getElementById('hidden_iframe');
-    const modal = document.getElementById('successModal');
-    let isSubmitted = false;
-
-    form.addEventListener('submit', function() {
-        isSubmitted = true;
-        const btn = form.querySelector('.btn-submit');
-        btn.textContent = '送出中...';
-        btn.disabled = true;
-        btn.style.backgroundColor = '#666';
-    });
-
-    iframe.addEventListener('load', function() {
-        if (isSubmitted) {
-            modal.style.display = 'flex';
-            const btn = form.querySelector('.btn-submit');
-            btn.textContent = '送出申請資料';
-            btn.disabled = false;
-            btn.style.backgroundColor = '';
-            form.reset(); 
-            isSubmitted = false;
-        }
-    });
-
-    function closeModal() {
-        modal.style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
